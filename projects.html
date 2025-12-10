@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects | Maynard Josh Manaog</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .projects-section { max-width:1200px; margin: auto; padding: 2rem 1rem; }
+    .project-detail ul { text-align:left; display:inline-block; margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="projects-section">
+      <h1 style="text-align:center; margin-bottom:1rem;">My Projects</h1>
+
+      <div class="project-container" id="projectContainer">
+        <div class="project-card" tabindex="0">
+          <img src="images/sislogo.jpg" alt="Student Information System screenshot or placeholder" />
+          <div class="card-body">
+            <h3>Student Information System</h3>
+            <p>A web-based platform to manage student records with secure access, grade tracking, and attendance features. Built to simplify administrative tasks for educators and students.</p>
+            <p class="tech"><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+          </div>
+          <div class="overlay">
+            <button class="btn" aria-label="View Student Information System" onclick="showProject(1)">View Project</button>
+          </div>
+        </div>
+
+        <div class="project-card" tabindex="0">
+          <img src="images/personalportfolio.jpg" alt="Personal portfolio website screenshot or placeholder" />
+          <div class="card-body">
+            <h3>Personal Portfolio</h3>
+            <p>A clean, responsive portfolio site showcasing projects, skills, and contact information. Designed for clarity and ease of navigation on all devices.</p>
+            <p class="tech"><strong>Technologies:</strong> HTML, CSS</p>
+          </div>
+          <div class="overlay">
+            <button class="btn" aria-label="View Personal Portfolio" onclick="showProject(2)">View Project</button>
+          </div>
+        </div>
+
+        <div class="project-card" tabindex="0">
+          <img src="images/task manager.jpg" alt="Task Management App screenshot or placeholder" />
+          <div class="card-body">
+            <h3>Task Management App</h3>
+            <p>A productivity app to add, track, and filter tasks with deadlines and completion status. Focused on improving daily workflow and time management.</p>
+            <p class="tech"><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+          </div>
+          <div class="overlay">
+            <button class="btn" aria-label="View Task Management App" onclick="showProject(3)">View Project</button>
+          </div>
+        </div>
+      </div>
+      <div id="project1" class="project-detail" aria-hidden="true">
+        <h1>Student Information System</h1>
+        <img src="sislogo.jpg" alt="Student Information System screenshot or placeholder" />
+        <p><strong>Description:</strong> A web-based platform to manage student records efficiently with secure access, grade tracking, and attendance management.</p>
+        <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Student record CRUD</li>
+          <li>Secure login and role-based access</li>
+          <li>Grade and attendance tracking</li>
+          <li>Responsive UI for mobile and desktop</li>
+        </ul>
+        <button class="btn" onclick="showProjects()">Back to Projects</button>
+      </div>
+
+      <div id="project2" class="project-detail" aria-hidden="true">
+        <h1>Personal Portfolio</h1>
+        <img src="personalportfolio.jpg" alt="Personal portfolio screenshot or placeholder" />
+        <p><strong>Description:</strong> A portfolio site to present projects, skills, and contact details in a professional layout. Focused on readability and quick navigation.</p>
+        <p><strong>Technologies:</strong> HTML, CSS</p>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Responsive design</li>
+          <li>Project showcase with images and descriptions</li>
+          <li>Contact form (front-end simulated)</li>
+        </ul>
+        <button class="btn" onclick="showProjects()">Back to Projects</button>
+      </div>
+
+      <div id="project3" class="project-detail" aria-hidden="true">
+        <h1>Task Management App</h1>
+        <img src="task manager.jpg" alt="Task Management App screenshot or placeholder" />
+        <p><strong>Description:</strong> A simple app to create, manage, and filter tasks with deadlines and completion status to help organize daily work.</p>
+        <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Add / edit / delete tasks</li>
+          <li>Mark complete and filter by status</li>
+          <li>Local storage persistence (optional)</li>
+        </ul>
+        <button class="btn" onclick="showProjects()">Back to Projects</button>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p style="text-align:center;">&copy; 2025 Maynard Josh Manaog. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showProject(projectNum) {
+      document.getElementById('projectContainer').style.display = 'none';
+      document.getElementById('project1').classList.remove('active');
+      document.getElementById('project2').classList.remove('active');
+      document.getElementById('project3').classList.remove('active');
+
+      const detail = document.getElementById('project' + projectNum);
+      if (detail) {
+        detail.classList.add('active');
+        detail.setAttribute('aria-hidden', 'false');
+      }
+      ['project1','project2','project3'].forEach(id => {
+        if (id !== 'project' + projectNum) {
+          const el = document.getElementById(id);
+          if (el) el.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    function showProjects() {
+      document.getElementById('projectContainer').style.display = 'grid';
+      ['project1','project2','project3'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.remove('active');
+          el.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
